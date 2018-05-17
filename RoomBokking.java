@@ -1,4 +1,4 @@
-package problem2;
+
 import java.text.*;
 import java.util.*;
 class test1{
@@ -59,10 +59,6 @@ class test1{
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public void book(){
-	
-		
-	}
 	
 }
 public class Main {
@@ -73,13 +69,14 @@ public class Main {
 		Scanner sc=new Scanner(System.in);
 		test1 ob=new test1();
 		int sum=0,i=1;
-		while(true){
-		System.out.println("Booking");
+		System.out.println("Booking:");
 		System.out.println();
+		while(true){
+		
 		System.out.println("Please choose the services required.");
 		System.out.println("AC/non-AC(AC/nAC)");
 		ob.setAc(sc.nextLine());
-		System.out.println("Cot(Single/Double");
+		System.out.println("Cot(Single/Double)");
 		ob.setCot(sc.nextLine());
 		System.out.println("With cable connection/without cable connection(C/nC)");
 		ob.setCable(sc.nextLine());
@@ -114,50 +111,56 @@ public class Main {
 		else{
 			 sum=sum+0;
 		}
-		if(ob.getL().equals("AC")){
+		if(ob.getL().equals("L")){
 			sum=sum+100;
 		}
 		else{
 			sum=sum+0;
 		}
-		System.out.println("The total charge is Rs."+sum);
+		System.out.println();
+		System.out.println("The total charge is Rs."+sum+".");
 		System.out.println("The services chosen are");
-		if(ob.getAc().equals("AC")){
-			 sum=sum+1000;
+		if(ob.getAc().equals("nAC") && ob.getCot().equals("Double")){
+			System.out.println("Double cot non-AC room");
+		}
+		else if(ob.getAc().equals("nAC") && ob.getCot().equals("Single")){
+			System.out.println("Single cot non-AC room");
+		}
+		else if(ob.getAc().equals("AC") && ob.getCot().equals("Single")){
+			System.out.println("Single cot AC room");
 		}
 		else{
-			sum=750;
-		}
-		if(ob.getCot().equals("Single")){
-			sum=sum+0;
-		}
-		else{
-			 sum=sum+350;
+			System.out.println("Double cot AC room");
 		}
 		if(ob.getCable().equals("C")){
-			 sum=sum+50;
+			System.out.println("Cable connection enabled");
 		}
 		else{
-			sum=sum+0;
+			System.out.println("Cable connection disabled");
 		}
 		if(ob.getWifi().equals("W")){
-			 sum=sum+200;
+			 System.out.println("Wi-Fi enabled");
 		}
 		else{
-			 sum=sum+0;
+			System.out.println("Wi-Fi disabled");
 		}
-		if(ob.getL().equals("AC")){
-			sum=sum+100;
+		if(ob.getL().equals("L")){
+			System.out.println("with laundry service");
 		}
 		else{
-			sum=sum+0;
+			System.out.println("without laundry service");
 		}
+		System.out.println("and the Date of Booking is "+ob.getDate());
+		System.out.println();
 		System.out.println("Do you want to proceed?(yes/no)");
 		ob.setPro(sc.nextLine());
+		System.out.println();
 		sum=0;
 		if(ob.getPro().equals("yes")) break;
 		}
 		System.out.println("Thank you for booking. Your room number is "+ i++ +".");
+		sc.close();
 	}
 
 }
+
