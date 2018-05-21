@@ -1,5 +1,6 @@
 
-
+//Employee file
+---------------------------------------------------------------------------------------
 public class Employee {
 	String n,a,c,e,p,pi;// variables to store details of customer 
 	String ac,cot,cable,wifi,l,date; //variables to store details of room type
@@ -179,4 +180,95 @@ public class Employee {
 		System.out.println();
 	
 	}
+}
+
+//Main file
+-------------------------------------------------------------------------
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Employee ob=new Employee();
+		int i=0,c=0;
+		
+		int a[]=new int[100];
+		int b[]=new int[100];
+		Scanner sc=new Scanner(System.in);
+		while(true){
+		System.out.println("Registration");
+		System.out.println();
+		System.out.println("Enter your name");
+		ob.setN(sc.nextLine());
+		System.out.println("Enter your address");
+		ob.setA(sc.nextLine());
+		System.out.println("Contact Number");
+		ob.setC(sc.nextLine());
+		System.out.println("E-Mail ID");
+		ob.setE(sc.nextLine());
+		System.out.println("Enter proof type");
+		ob.setP(sc.nextLine());
+		System.out.println("Enter proof id");
+		ob.setPi(sc.nextLine());
+		System.out.println();
+		System.out.println("Thank you for registering. Your id is " + ++i +"..");
+		System.out.println();
+		b[i]=i;
+		System.out.println("Do you want to book a room (y/n)?");
+		String br=sc.nextLine();
+		if(br.equals("y")){
+			while(true){
+				System.out.println();
+				System.out.println("Booking:");
+				System.out.println("AC/non-AC(AC/nAC)");
+				ob.setAc(sc.nextLine());
+				System.out.println("Cot(Single/Double)");
+				ob.setCot(sc.nextLine());
+				System.out.println("With cable connection/without cable connection(C/nC)");
+				ob.setCable(sc.nextLine());
+				System.out.println("Wi-Fi needed or not(W/nW)");
+				ob.setWifi(sc.nextLine());
+				System.out.println("Laundry service needed or not(L/nL)");
+				ob.setL(sc.nextLine());	
+				System.out.println();
+				System.out.println("Enter the date of booking");
+				ob.setDate(sc.nextLine());
+				System.out.println();
+				ob.book();
+				System.out.println("Do you want to proceed?(yes/no)");
+				String pro=sc.nextLine();
+				System.out.println();
+				System.out.println("Thank you for booking. Your room number is "+ ++c +".");
+				a[i]=c;
+				if(pro.equals("yes")) break;
+			}
+		}
+		else{
+			System.out.println();
+			System.out.println("Thank You");
+		}
+		System.out.println();
+		System.out.println("Do you want to continue registration?(yes/no)");
+		String re=sc.nextLine();
+		System.out.println();
+		if(re.equals("no")) break;
+		}
+		System.out.println("View all bookings:");
+		System.out.println();
+		System.out.println("Enter the start date");
+		String sdate=sc.nextLine();
+		System.out.println("Enter the end date");
+		String edate=sc.nextLine();
+		System.out.println("The bookings made from "+sdate+" to "+edate+" are");
+		System.out.println("Room number Customer ID");
+		for(int j=1;j<=i;j++){
+			if(a[j]>0){
+			System.out.format("%d%12d\n",a[j],b[j]);
+			}
+		}
+		
+		
+	}
+
 }
