@@ -1,0 +1,106 @@
+1.write a java program to read the file name and display the content of the file.
+
+package p11;
+import java.io.FileInputStream;
+import java.util.*;
+public class Demo1 {
+
+	public static void main(String[] args) {
+		try
+		{
+			p0.Rdwr.bw.write("Enter the filename to display:");
+			p0.Rdwr.bw.flush();
+			String fname=p0.Rdwr.br.readLine();
+			FileInputStream ft=new FileInputStream(fname);
+			int ch;
+			while((ch=ft.read())!=-1){
+				System.out.print((char)ch);
+			}
+			ft.close();
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
+}
+
+2.write a program to copy a file.
+
+package p11;
+
+import java.util.*;
+import java.io.*;
+public class Demo2 {
+
+	public static void main(String[] args) {
+		try {
+			p0.Rdwr.bw.write("Enter the source and target filename :");
+			p0.Rdwr.bw.flush();
+			String sfname=p0.Rdwr.br.readLine();
+			String tfname=p0.Rdwr.br.readLine();
+			FileInputStream ft=new FileInputStream(sfname);
+			FileOutputStream ft1=new FileOutputStream(tfname);
+			int ch;
+			while((ch=ft.read())!=-1){
+				ft1.write(ch);
+			}
+			ft.close();
+			ft1.close();
+			System.out.println("File copied.");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+	}
+
+}
+
+target file name can be "con" (console) to print on the screen and also "prn" (printer) to print the file.
+
+3.write a java program to copy the image file in colour and mono colour.
+
+package p11;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
+public class Demo3 {
+
+	public static void main(String[] args) {
+		try {
+			p0.Rdwr.bw.write("Enter the source and target filename :");
+			p0.Rdwr.bw.flush();
+			String sfname=p0.Rdwr.br.readLine();
+			String tfname=p0.Rdwr.br.readLine();
+			FileInputStream ft=new FileInputStream(sfname);
+			FileOutputStream ft1=new FileOutputStream(tfname);
+			int ch,i=0;
+			while((ch=ft.read())!=-1){
+				if(i<=30){		//to preserve the image architecture
+					ft1.write(ch);
+					i++;
+				}
+				else{
+					ft1.write(ch);
+					ch=ft.read();
+					ft1.write(ch);
+					ch=ft.read();
+					ft1.write(ch);
+				}
+			}
+			ft.close();
+			ft1.close();
+			System.out.println("File copied.");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
+}
+
+
+
+
+
+	

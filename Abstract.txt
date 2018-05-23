@@ -1,0 +1,33 @@
+Abstract and Interface
+......................
+
+1.Abstract is pure virtual class and method without body.
+2.If a class abstract ,object of abstract class cannot be created.
+3.The abstract class should be inherited and overridden by abstract method.
+4.Object of the sub class should be created with super class reference.
+5.If the class is abstract, method need not be abstract.
+6.If the method became abstract then its corresponding class should be abstract.
+7.Abstract class have two methods concrete and non concrete methods.
+8.Non concrete methods declared but not defined in the class,this method is abstract.
+9.Abstract class or method can be inherited.
+10.Abstract class or method can not be declared as protected & private.
+11.One abstract class can extends another abstract class but,class that extends final class then it has to over ridden all the methods in it.
+12.Abstract class can have constructor and instance variable.
+
+Interface 
+.........
+
+1.Interface is a pure abstraction,only abstract methods.
+2.Interface allows the run time polymorphism.super class reference with sub class object.
+3.One interface can extends another interface.
+4.Class cannot extends interface, but it can only implements.
+5.Integration is easy between different project.
+6.After compilation of interface it became abstract interface .
+7.One class implements multiple interface.
+8.There is no constructor in the interface,because then it will became body for interface.
+9.Variable in interface after compilation it will become final(constant) by default.
+10.Variable in interface can be used before the object creation because it became class variable by default.
+11.The reference should be create to the sub class where the Interface has the "implements" of the parent class.
+
+
+create a class employee name age address,create two object of employee class and store data in it and compare the two objects and say wheater both are same or different.

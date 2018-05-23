@@ -1,0 +1,143 @@
+
+BufferedReader and BufferedWriter
+
+package p10;
+import java.io.*;
+public class Demo1 {
+
+	public static void main(String[] args) {
+		try {
+			BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+			BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(System.out));
+			bw.write("Enter two numbers\n");
+			bw.flush();
+			int a=Integer.parseInt(br.readLine());
+			int b=Integer.parseInt(br.readLine());
+			int c=a+b;
+			bw.write("Sum = "+c);
+			bw.flush();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+	}
+
+
+
+Default package for BufferedReader BufferedWriter
+
+package p0;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+public class Rdwr {
+	
+	public static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+	public static BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(System.out));
+}
+
+
+Adding numbers from a file and writing on another file
+
+package p10;
+
+import java.io.*;
+
+public class Demo2 {
+
+	public static void main(String[] args) {
+		try {
+			p0.Rdwr.bw.write("Enter source and target filename");
+			p0.Rdwr.bw.flush();
+			String f1=p0.Rdwr.br.readLine();
+			String f2=p0.Rdwr.br.readLine();
+			BufferedReader bf=new BufferedReader(new FileReader(f1));
+			BufferedWriter bg=new BufferedWriter(new FileWriter(f2));
+			String l1;
+			while((l1=bf.readLine())!=null){
+				String s2[]=l1.split(",");
+				int sum=0;
+				for (String string : s2) {
+					sum=sum+Integer.parseInt(string);
+				}
+				l1=l1+" = "+sum;
+				bg.write(l1);
+				bg.newLine();
+			}
+			bg.flush();
+			bg.close();
+			bf.close();
+			System.out.println("Process closed");
+		} catch (Exception e) {
+			
+		}
+	}
+
+}
+
+
+Checking if its a file or a folder and writing the files\folders from a folder
+
+
+package p10;
+
+import java.io.*;
+
+public class Demo3 {
+
+	public static void main(String[] args) {
+		try {
+			p0.Rdwr.bw.write("Enter filename with the path");
+			p0.Rdwr.bw.flush();
+			String f1=p0.Rdwr.br.readLine();
+			File f2=new File(f1);
+			if(f2.exists()){
+				if(f2.isDirectory()){
+					String s2[]=f2.list();
+					p0.Rdwr.bw.write("Given is a folder\n");
+					p0.Rdwr.bw.flush();
+					for (String string : s2) {
+						p0.Rdwr.bw.write(string+"\n");
+						p0.Rdwr.bw.flush();
+					}
+				}
+				else
+				{
+					p0.Rdwr.bw.write("Given is a file");
+					p0.Rdwr.bw.flush();
+				}
+			}
+			else
+			{
+				p0.Rdwr.bw.write("File does not exist");
+				p0.Rdwr.bw.flush();
+			}
+		} catch (Exception e) {
+			
+		}
+
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

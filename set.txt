@@ -1,0 +1,31 @@
+package p7;
+import java.util.*;
+public class Demo5 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String arr[]={"black","brown"};
+		Set<String> st=new HashSet(Arrays.asList(arr));
+		
+		st.add("Green");
+		st.add("Blue");
+		st.add("Green");
+		st.add("Red");
+		st.add("White");
+		st.add("Black");
+		
+		//System.out.println(st);
+		/*for(String x: st){
+			System.out.println(x);
+		}*/
+		Iterator<String> it=st.iterator();
+		while(it.hasNext())
+		{
+			System.out.println(it.next());
+		}
+		st.remove("Black");
+		System.out.println(st);
+		
+	}
+
+}

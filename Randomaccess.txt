@@ -1,0 +1,126 @@
+Random Access 
+1.write a java program to open a file and convert the small a into capital A.
+
+package p11;
+import java.util.*;
+import java.io.*;
+public class Demo4 {
+public static void main(String[] args) {
+	try {
+		p0.Rdwr.bw.write("Enter the filename to change:");
+		p0.Rdwr.bw.flush();
+		String fname=p0.Rdwr.br.readLine();
+		File file=new File(fname);
+		RandomAccessFile rm=new RandomAccessFile(file, "rw");
+		long fp=0;
+		int ch;
+		while((ch=rm.read())!=-1){
+			
+			if(ch==97){
+				rm.seek(fp);
+				rm.write(65);
+			}
+			fp++;
+			}
+		rm.close();
+				
+	} catch (Exception e) {
+		// TODO: handle exception
+	}
+}
+}
+
+
+package p11;
+import java.io.*;
+
+class Empdata{
+	public String id;
+	public String name;
+	public String city;
+	//id=5char,name=30char,city=20char total=55char
+	long fp=0;
+	File file=new File("D:\\emp.dat");
+	RandomAccessFile rm;
+	public Empdata() throws Exception{
+		super();
+		rm=new RandomAccessFile(file, "rw");
+	}
+	public void insertdata() throws Exception{
+		System.out.println("Enter the id,name and city:");
+		id=p0.Rdwr.br.readLine();
+		name=p0.Rdwr.br.readLine();
+		city=p0.Rdwr.br.readLine();
+		mfpointer();
+		store(id,5);
+		store(name,30);
+		store(city,20);
+	}
+	public void mfpointer() throws Exception{
+		fp=(Integer.parseInt(id)-1)*55;
+		rm.seek(fp);
+		
+	}
+	public void store(String x,int y)throws Exception{
+		rm.writeBytes(x);
+		for(int i=x.length();i<=y;i++){
+			rm.write(32);
+		}
+		
+	}
+	public void display()throws Exception{
+		System.out.println("Enter the id:");
+		id=p0.Rdwr.br.readLine();
+		mfpointer();
+		id=read(5);
+		name=read(30);
+		city=read(20);
+		System.out.println(id+" "+name+" "+city);
+	}
+	public String read(int y)throws Exception{
+		String x="";
+		for(int i=0;i<y;i++)
+		{
+			x=x+(char)rm.read();
+		}
+		return x;
+	}
+
+	@Override
+	protected void finalize() throws Throwable {
+		
+	
+		rm.close();
+	}
+}
+
+public class Demo6 {
+
+	public static void main(String[] args) {
+	try {
+		Empdata ob=new Empdata();
+		int ch=0;
+		do{
+			System.out.println("0 Exit 1 Insert 2 Display");
+			ch=Integer.parseInt(p0.Rdwr.br.readLine());
+			switch(ch){
+			case 0:
+				System.out.println("Program over");
+				ob=null;
+				break;
+			case 1:
+				ob.insertdata();
+				break;
+			case 2:
+				ob.display();
+				}
+			}while(ch!=0);
+		
+	} catch (Throwable e) {
+		System.out.println(e);
+	}
+
+	}
+
+}
+

@@ -1,0 +1,17 @@
+public void delete(int ch){
+	String x1[]={"id","name","city"};
+	System.out.println("Enter "+x1[ch]+" to delete");
+	String x2=sc.nextLine();
+	String x3=".*"+x2+".*";
+	List<Employee> li1= new ArrayList();
+	System.out.println(x3);
+	for(Employee e:li)
+	{
+		System.out.println(e.toString());
+		if(e.toString().matches(x3))
+			li1.add(e);
+	}
+	
+	System.out.println(li1);
+	li.removeAll(li1);
+}

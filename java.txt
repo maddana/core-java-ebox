@@ -1,0 +1,113 @@
+package p2;   //super class 
+
+public class Arithmetic {
+	
+int num1,num2,num3;
+public Arithmetic() {
+	super(); //refers to super class 'Object class'
+	num1=10;
+	num2=20;
+}
+public Arithmetic(int num1, int num2) {
+	super();
+	this.num1 = num1;
+	this.num2 = num2;
+}
+public void cal(){ //virtual Function for sub class cal function
+	
+}
+public void display(){
+	// TODO Auto-generated method stub
+	System.out.println("Sum = "+num3);
+}
+
+}
+
+............
+package p2;
+
+public class Add extends Arithmetic {
+
+	public Add() {
+		super();
+	}
+	public Add(int num1, int num2) {
+		super(num1,num2);
+	}
+	public void cal(){
+		num3=num1+num2;
+	}
+	
+	
+}
+............
+
+package p2;
+
+public class Sub extends Arithmetic{
+
+	public Sub() {
+		super();
+	}
+	public Sub(int num1, int num2) {
+		super(num1,num2);
+	}
+	public void cal(){
+		num3=num1-num2;
+	}
+
+}
+...........
+package p2;
+
+public class Mul extends Arithmetic{
+
+	public Mul() {
+		super();
+	}
+	public Mul(int num1, int num2) {
+		super(num1,num2);
+	}
+	public void cal(){
+		num3=num1*num2;
+	}
+}
+..........
+package p2;
+
+public class Div extends Arithmetic{
+
+	public Div() {
+		super();
+	}
+	public Div(int num1, int num2) {
+		super(num1,num2);
+	}
+	public void cal(){
+		num3=num1/num2;
+	}
+}
+..........
+
+package p2; //main class
+
+public class Demo1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	Arithmetic ob=new Add(100,200);//loose coupling
+	ob.cal();
+	ob.display();
+	ob=new Sub(200,100);
+	ob.cal();
+	ob.display();
+	ob=new Mul(200,100);
+	ob.cal();
+	ob.display();
+	ob=new Div(200,100);
+	ob.cal();
+	ob.display();
+	}
+
+}
+

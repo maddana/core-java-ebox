@@ -1,0 +1,39 @@
+package p4;
+
+interface Inf0{
+	public void f0();
+}
+abstract interface Inf1 extends Inf0 {
+
+	int i=10;//after compilation the variable will becomes static final int i ,'constant '.
+	abstract public void f1();
+}
+class Inf3 implements Inf1{
+
+	@Override
+	public void f1() {
+		// TODO Auto-generated method stub
+		System.out.println("I am in f1");
+	}
+
+	@Override
+	public void f0() {
+		// TODO Auto-generated method stub
+		System.out.println("I am in f0");
+	}
+	
+}
+
+public class Demo2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Inf1 inf1;
+		inf1 = new Inf3();
+		System.out.println(Inf1.i);
+		inf1.f1();
+		inf1.f0();
+		
+	}
+
+}

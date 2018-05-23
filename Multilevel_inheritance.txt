@@ -1,0 +1,121 @@
+1.when we overiding the subclass access specifier should be >= super class 
+2.Final-non access specifier,which can be applied to class,method and variable,
+final class cannot be inherited
+final method cannot be overridden
+final variable cannot be changed and it became constant
+
+multilevel inheritance
+
+class A {
+}
+class B extends A{
+}
+class C extens B{
+}
+
+using multilevel inheritance 
+
+package p3;
+public class Arithmetic {
+	int num1,num2;
+	public Arithmetic(int num1, int num2) {
+		super();
+		this.num1 = num1;
+		this.num2 = num2;
+	}
+	public Arithmetic() {
+		super();
+		num1=10;
+		num2=20;
+	}
+	public void setData(int num1, int num2) {
+		this.num1 = num1;
+		this.num2 = num2;
+	}
+	public void cal(){
+	}
+	public void display(){
+	}
+}
+..............
+/**
+ * 
+ */
+package p3;
+
+/**
+ * @author t-Dayananda1
+ *
+ */
+public class Add extends Arithmetic {
+	
+	int anum;
+	public void cal(){
+		anum=num1+num2;
+	}
+	public void display(){
+		System.out.println("Sum = "+anum);
+	}
+	
+
+}
+..............
+package p3;
+
+public class Demo1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	Arithmetic ob=new Div();
+	ob.setData(300, 200);
+	ob.cal();
+	ob.display();
+		
+	}
+
+}
+...............
+package p3;
+
+public class Demo1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	Arithmetic ob=new Div();
+	ob.setData(300, 200);
+	ob.cal();
+	ob.display();
+		
+	}
+
+}
+...............
+package p3;
+
+public class Demo1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	Arithmetic ob=new Div();
+	ob.setData(300, 200);
+	ob.cal();
+	ob.display();
+		
+	}
+
+}
+................
+package p3;
+
+public class Demo1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	Arithmetic ob=new Div();
+	ob.setData(300, 200);
+	ob.cal();
+	ob.display();
+		
+	}
+
+}

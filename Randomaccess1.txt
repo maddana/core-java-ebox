@@ -1,0 +1,31 @@
+Random Access 
+1.write a java program to open a file and convert the small a into capital A.
+
+package p11;
+import java.util.*;
+import java.io.*;
+public class Demo4 {
+public static void main(String[] args) {
+	try {
+		p0.Rdwr.bw.write("Enter the filename to change:");
+		p0.Rdwr.bw.flush();
+		String fname=p0.Rdwr.br.readLine();
+		File file=new File(fname);
+		RandomAccessFile rm=new RandomAccessFile(file, "rw");
+		long fp=0;
+		int ch;
+		while((ch=rm.read())!=-1){
+			
+			if(ch==97){
+				rm.seek(fp);
+				rm.write(65);
+			}
+			fp++;
+			}
+		rm.close();
+				
+	} catch (Exception e) {
+		// TODO: handle exception
+	}
+}
+}

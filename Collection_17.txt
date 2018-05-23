@@ -1,0 +1,348 @@
+Collection in Java
+	Memory, where the the data is stored before or after processing.All the collections are generic template.Collections is made up of
+1.Interfaces
+2.Classes
+3.Algorithms - logics implements on classes
+
+Interfaces
+1.Collection 	2.Map
+(Value)		(Key value pair)
+
+Sub-Interfaces in Collection(Under-Collection)
+
+1.List(Interface)
+All the list types are 'order'(Same order is maintained in the data collection)
+They are with duplicates.
+They can be accessed by the index(Behave like an array). 
+Classes - a.ArrayList	b.Vector	c.LinkedList
+         (Asynchronous)  (Synchronous)   (Asynchronous)
+ArrayList - General type
+Vector	  - Thread Safe
+LinkedList- Huge amount of data is handled (faster and effective)
+
+2.Set
+No duplicates-Distinct.
+They cannot be accessed by the index.They need to be accessed by the value.
+a.HashSet	b.TreeSet	c.LinkedHashSet
+(Unordered)      (Sorted)	 (Ordered)
+
+3.Queue
+FIFO
+a.LinkedList
+
+4.Dequeue
+Operate in queue as well as stack(push,pop etc)
+a.LinkedList	b.
+
+Map
+No duplicate of a 'key' and should be accessed on the 'key' but the 'value' can be duplicate.Key and value should be provided.
+a.HashMap	b.TreeMap	c.LinkedHashMap
+(Key-unordered) (key-sorted)    (key-ordered)
+
+Generics(in Collection)
+-Used to store data not for processing.
+-They are free from data-type
+-Data-type should be defined while creating the object(data-type should be defined)
+-Cannot create a generic for a primitive data-type.
+
+Program on Generics(in collection)
+
+package p7;
+class Gt1<t>{
+	t a,b;
+	public void setData(t x,t y){
+		a=x;//Instance variable
+		b=y;//Instance variable
+	}
+	public void display(){
+		System.out.println(a+"  "+b);
+	}
+}
+class Gt2<t,t1>{
+	t a;
+	t1 b;
+	
+	public void setData(t x,t1 y){
+		a=x;
+		b=y;
+	}
+	public void display(){
+		System.out.println(a+"  "+b);
+	}
+}
+public class Demo {
+
+	public static void main(String[] args) {
+		Gt1<Integer> ob=new Gt1();
+		ob.setData(10,20);
+		ob.display();
+		Gt1<String> ob1=new Gt1();
+		ob1.setData("Harshit","Amit");
+		ob1.display();
+		Gt1<Float> ob2=new Gt1();
+		ob2.setData(10.2f,20.7f);
+		ob2.display();
+		Gt2<String,Integer> ob4=new Gt2();
+		ob4.setData("Sugumar", 89);
+		ob4.display();
+	}
+
+}
+
+
+How many synchronous collections are present and how do you convert asynchronous collection to synchronous collection
+Scenario : For threads
+
+Unanimous class
+
+package p7;
+interface if1{
+	public void f1();
+}
+public class Demo1 {
+
+	public static void main(String[] args) {
+		if1 ob=new if1(){
+
+			@Override
+			public void f1() {//unanimous class
+				System.out.println("I am in f1");
+				
+			}
+			{
+				System.out.println("I am in a constructor");
+			}
+			@Override
+			public String toString() {
+				return "ok";
+			}
+		};
+		ob.f1();
+		System.out.println(ob);
+	}
+
+}
+
+
+Classes
+
+package p7;
+import java.util.*;//list, set,map etc
+
+public class Demo2 {
+
+	public static void main(String[] args) {
+	List<Integer> li=new LinkedList();//reference of an interfaceand object of a class	
+	//li=new Vector();//vector and ArrayList works the same
+	li.add(70);
+	li.add(new Integer(10));
+	li.add(40);
+	li.add(60);
+	System.out.println(li);
+	for(int i=0;i<li.size();i++){
+		System.out.print(li.get(i)+"  ");
+	}
+	System.out.println();
+	for(Integer x:li){
+		System.out.print(x+"  ");
+	}
+	System.out.println();
+	Iterator<Integer>it=li.iterator();//copy of the data given to 'it'
+	while(it.hasNext()){
+		System.out.print(it.next()+"  ");
+	}
+	}
+li.add(0,100);//add at the beginning
+	li.add(2,200);
+	li.add(300);//default adds at bottom
+	System.out.println(li);
+	System.out.println(li.remove(0));//remove by index,returns removed value
+	
+	System.out.println(li.remove(new Integer(400)));//remove by value and returns true or false
+	System.out.println(li);
+	System.out.println(li.isEmpty());
+	//li.removeAll(); shouldn't be used in collection
+	li.clear();
+	System.out.println(li);
+	System.out.println(li.isEmpty());
+
+}
+
+
+
+package p7;
+import java.util.*;
+public class Demo3 {
+
+	public static void main(String[] args) {
+		Integer a1[]={10,5,6,34,21};
+		Integer a2[]={10,56,7,21,33};
+		List<Integer>li=new ArrayList(Arrays.asList(a1));
+		System.out.println(li);
+		List<Integer>li1=new ArrayList(Arrays.asList(a2));
+		System.out.println(li1);
+		//li.addAll(li1);
+		//li.removeAll(li1);
+		//li.retainAll(li1);
+		System.out.println(li);
+		System.out.println(li1);
+		System.out.println(li.contains(34));
+		Collections.sort(li);
+		//Collections.shuffle(li);
+		Integer x=Collections.binarySearch(li, 10);
+		System.out.println(x);
+		List<Integer>li3=new ArrayList(li1);
+		System.out.println(li3);
+		
+	}
+
+}
+
+Take data in 2 arrays and print non commom elements from both arrays
+
+Employee id,name,city
+1.Add
+2.Display
+3.delete the object
+4.Sorted on id
+5.Sorted on name
+6.Sorted on city
+7.Object should be deleted based on id
+8... on name
+9... on city
+10.Object should be inserted based on position 
+
+Employee Details  ........
+Demo
+
+package p7;
+
+public class Demo4 {
+
+	public static void main(String[] args) {
+		Employeebo ob=new Employeebo();
+		int ch=0;
+		do{
+			System.out.println("1 Insert 2 dis 3 s id 4 s name 5 s city");
+			ch=Integer.parseInt(ob.sc.nextLine());
+			switch(ch){
+			case 0 : System.out.println("Program Over");break;
+			case 1 : ob.insert();break;
+			case 2 : ob.display();break;
+			case 3 : ob.sort(0);break;
+			case 4 : ob.sort(1);break;
+			case 5 : ob.sort(2);break;
+			case 6 : ob.delete(ch-6);break;
+			case 7 : ob.delete(ch-6);break;
+			case 8 : ob.delete(ch-6);break;
+			}
+		}while(ch!=0);
+	
+	}
+
+}
+
+
+Employeebo
+
+package p7;
+import java.util.*;
+
+public class Employeebo {
+List<Employee>li;
+Scanner sc;
+
+public Employeebo(){
+	li=new ArrayList();
+	sc=new Scanner(System.in);	
+}
+
+public void insert(){
+	Employee obj=new Employee();
+	System.out.println("Enter id, name and city");
+	obj.setId(Integer.parseInt(sc.nextLine()));
+	obj.setName(sc.nextLine());
+	obj.setCity(sc.nextLine());
+	li.add(obj);	
+}
+public void display(){
+	System.out.println(li);
+}
+public void sort(int ch){
+	Employee.flag=ch;
+	Collections.sort(li);
+public void display1(){
+	for(Employee e:li){
+		System.out.println(e.getId()+"  "+e.getName());
+	}
+	/*
+	for(int i=0;i<li.size();i++){
+		System.out.println(li.get(i).getId()+"  "+li.get(i).getName());
+	}
+	*/
+}
+public void delete(int ch){
+	String x1[]={"id","name","city"};
+	System.out.println("Enter to "+x1[ch]+" to delete");
+	String x2=sc.nextLine();
+	String x3=".*"+x2+".*";
+	List<Employee> li1=new ArrayList();
+	for(Employee e:li){
+		if(e.toString().matches(x3))
+			li1.add(e);
+	}
+	li.removeAll(li1);
+
+}
+
+}
+
+Employee
+
+package p7;
+public class Employee implements Comparable<Employee>{
+static int flag=0; 
+int id;
+String name;
+String city;
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public String getCity() {
+	return city;
+}
+public void setCity(String city) {
+	this.city = city;
+}
+@Override
+	public String toString() {
+		
+		return id+"  "+name+"  "+city;
+	}
+@Override
+public int compareTo(Employee o) {
+	if(flag==0) return this.id-o.id;
+	else if(flag==1) return this.name.compareTo(o.name);
+	else return this.city.compareTo(o.city);
+}
+
+}
+
+
+
+
+
+
+
+
+
+

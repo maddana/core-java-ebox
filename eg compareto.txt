@@ -1,0 +1,110 @@
+package p1;
+
+public class Employee implements Comparable <Employee>{
+	
+private int emp_id;
+private String emp_name;
+private String emp_city;
+
+public int getEmp_id() {
+	return emp_id;
+}
+public void setEmp_id(int emp_id) {
+	this.emp_id = emp_id;
+}
+public String getEmp_name() {
+	return emp_name;
+}
+public void setEmp_name(String emp_name) {
+	this.emp_name = emp_name;
+}
+public String getEmp_city() {
+	return emp_city;
+}
+public void setEmp_city(String emp_city) {
+	this.emp_city = emp_city;
+}
+
+@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Id = "+emp_id+" Name = "+emp_name+" City = "+emp_city ;
+	}
+	@Override
+		public boolean equals(Object obj) {
+			// TODO Auto-generated method stub
+			boolean f1=false;
+			if(obj instanceof Employee ){
+				Employee obj1=(Employee) obj;
+				//if(this.emp_id==obj1.emp_id && this.emp_name.equals(obj1.emp_name) && this.emp_city.equals(obj1.emp_city)){
+				//	f1=true;
+				//}
+				if(this.hashCode()==obj1.hashCode())
+				{
+					f1=true;
+				}
+			}
+			return f1;
+		}
+		@Override
+			public int hashCode() {
+				// TODO Auto-generated method stub
+			int x=0;
+			x=emp_id+emp_name.hashCode()+emp_city.hashCode();
+			
+			return x;
+			
+			}
+		@Override
+		public int compareTo(Employee o) {
+			// TODO Auto-generated method stub
+			
+			//return this.emp_id-o.emp_id;
+			//return this.emp_name.compareTo(o.emp_name);
+			if(this.emp_name.compareTo(o.emp_name)==0){
+				return this.emp_id-o.emp_id;
+			}
+			else
+			{
+				return this.emp_name.compareTo(o.emp_name);
+			}
+		}
+
+}
+package p1;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Demo2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Employee ob[]= new Employee[4];
+		Scanner sc=new Scanner(System.in);
+		
+		for(int i=0;i<4;i++)
+		{
+		ob[i]=new Employee();
+		ob[i].setEmp_id(Integer.parseInt(sc.nextLine()));
+		ob[i].setEmp_name(sc.nextLine());
+		ob[i].setEmp_city(sc.nextLine());
+		}
+		/*if(ob[0].equals(ob[1]))
+		{
+			System.out.println("Same data");
+		}
+		else
+		{
+			System.out.println("Different data");
+		}*/
+		Arrays.sort(ob);
+		for(int i=0;i<4;i++)
+		{
+		System.out.println(ob[i]);	
+		}
+		
+	}
+
+}

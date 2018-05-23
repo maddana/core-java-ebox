@@ -1,0 +1,204 @@
+Exception Handling: Handling an ambiguity situation.
+1.Exception- Exception Super Class
+2.Error    - Error Super Class
+Throwable super class(Can handle both exceptions and errors)
+Exception is the super class of all the classes
+
+Java supports 2 types of Exceptions
+1.Checked Exception   - Using resources(When the exception or error is known)
+2.Unchecked Exception - Compiles even with errors or exception(eg: Array out of bound)
+
+The exceptions in java is made up of keys(keywords) 
+1.try     - Normal instructions
+2.catch   - Handling the exceptions
+3.finally - Executes after try or catch
+4.throw   - Forcefully Generates an expression
+(raise in Oracle)   
+5.throws  - Will take the control to the calling point when
+	    exception araises to handle it
+(It is very important in the centralized way)
+
+Rules of Exceptions:
+1.Exceptions should be handled specifically.
+2.The exceptions should be from specific to general(order).
+3.The catch block should have the exception which can be created in the try block else it is an error.
+4.Every statement can have seperate try block in java.
+(which is not in Oracle)
+
+Structure of the try block
+---------
+try{
+}
+catch(exceptionlink reference){
+}
+---------
+try{
+}
+catch(exceptionlink reference){
+}
+finally{
+}
+---------
+try{
+}
+finally{
+}
+----------
+Invalid Structure:
+catch(exceptionlink reference){
+}
+finally{
+}
+-----------
+try{
+}
+catch(exceptionlink reference){
+}
+catch(excepion){
+}
+finally{
+}
+------------
+Invalid Structure:
+try{
+}
+catch(exceptionlink reference){
+}
+finally{
+}
+finally{
+}
+-------------
+Invalid Structure:
+try{
+}
+catch(exceptionlink reference){
+}
+Syso
+finally{
+}
+// There should'nt be any statement between try and finally blocks
+--------------
+try{   //Nested try blocks are supported
+try{
+}
+catch(exceptionlink reference){
+}
+finally{
+}
+}
+catch(exceptionlink reference){
+}
+finally{
+}
+---------------
+
+Exception handling program
+
+package p8;
+import java.util.*;
+public class Demo4 {
+
+	public static void main(String[] args) {
+		System.out.println("Program begins");
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter 2 numbers");
+		try{
+		int a=sc.nextInt();
+		int b=sc.nextInt();
+		if(b==0){
+			throw new Throwable("ok");
+			//Exception also
+		}
+		int c=a/b;
+		System.out.println(c);
+		}
+		catch(ArithmeticException ob){
+			System.out.println(ob);
+			System.out.println("-----");
+			System.out.println(ob.getMessage());
+			ob.printStackTrace();
+		}
+		catch(Exception ob1){
+			System.out.println("Exception  "+ob1.getMessage());
+		}
+		catch(Throwable ob2){
+			System.out.println("Throwable  "+ob2.getMessage());
+		}
+		
+		
+		System.out.println("Program over");
+		
+	}
+
+}
+
+Finally Block
+
+package p8;
+import java.util.*;
+public class Demo4 {
+
+	public static void main(String[] args) {
+		System.out.println("Program begins");
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter 2 numbers");
+		try{
+		int a=sc.nextInt();
+		int b=sc.nextInt();
+		if(b==0){
+			throw new Throwable("ok");
+		}
+		int c=a/b;
+		System.out.println(c);
+		//System.exit(0);
+		return;
+		}
+		catch(ArithmeticException ob){
+			System.out.println(ob);
+			System.out.println("-----");
+			System.out.println(ob.getMessage());
+			ob.printStackTrace();
+		}
+		catch(Exception ob1){
+			System.out.println("Exception  "+ob1.getMessage());
+		}
+		catch(Throwable ob2){
+			System.out.println("Throwable  "+ob2.getMessage());
+			//System.exit(0);-- doesn't go to finally block as it is forcefull termination 
+			return;
+		}
+		finally{		
+		System.out.println("Program over");
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

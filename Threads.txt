@@ -1,0 +1,126 @@
+Sample Thread program
+
+
+package p9;
+
+public class Demo {
+
+	public static void main(String[] args) throws InterruptedException {
+		Thr1 ob=new Thr1();
+		Thr1 ob1=new Thr1("Infosys",15);
+		Thr1 ob2=new Thr1("Wipro",20);
+		ob.start();
+		ob1.start();
+		ob2.start();//4 threads including main(default)
+		ob.join();
+		System.out.println("I am in Main");
+	}
+
+}
+
+
+
+
+Tic - Toc Game
+
+
+package p9;
+class Game{
+	public synchronized void f1(){
+		try {
+			notify();
+			System.out.print("Tic - ");
+			wait();
+		} catch (Exception e) {
+			
+		}
+	}
+	public synchronized void f2(){
+		try {
+			notify();
+			System.out.println("Toc");
+			wait();
+		} catch (Exception e) {
+			
+		}
+	}
+}
+class Player1 extends Thread{
+	Game ob;
+
+	public Player1(Game ob) {
+		super();
+		this.ob = ob;
+	}
+	@Override
+	public void run() {
+		for(int i=0;i<10;i++){
+			ob.f1();
+		}
+	}
+}
+class Player2 extends Thread{
+	Game ob;
+
+	public Player2(Game ob) {
+		super();
+		this.ob = ob;
+	}
+	@Override
+	public void run() {
+		for(int i=0;i<10;i++){
+			if(i==0) {
+				try {
+				sleep(10);
+			} catch (InterruptedException e) {
+				
+				e.printStackTrace();
+			}
+				}
+			ob.f2();
+		}
+	}
+}
+public class Demo2 {
+
+	public static void main(String[] args) {
+		Game ob=new Game();
+		Player1 t1=new Player1(ob);
+		Player2 t2=new Player2(ob);
+		t1.start();
+		t2.start();
+		
+	}
+
+}
+
+Thread class
+
+
+package p9;
+
+public class Thr1 extends Thread{
+	String na;
+	int n;	
+	public Thr1() {
+		super();
+		na="Cognizant";
+		n=10;
+	}
+	public Thr1(String na, int n) {
+		super();
+		this.na = na;
+		this.n = n;
+	}
+	@Override
+	public void run() {
+		for(int i=0;i<n;i++){
+			System.out.println(na+"  "+i);
+			try {
+				sleep(4);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}

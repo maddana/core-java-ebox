@@ -1,0 +1,143 @@
+package p8;
+import java.util.*;
+
+public class Demo {
+
+	public static void main(String[] args) {
+		Queue<Integer>ob=new LinkedList();
+		ob.add(7);
+		ob.add(8);
+		ob.add(2);
+		System.out.println(ob);
+		int x=ob.remove();
+		System.out.println(x);
+		System.out.println(ob);
+		System.out.println(ob.remove());
+		ob.add(40);
+		System.out.println(ob);
+	}
+
+}
+
+
+
+
+package p8;
+import java.util.*;
+public class Demo1 {
+
+	public static void main(String[] args) {
+		Deque<Integer>ob=new ArrayDeque();
+		ob.add(10);//FIFO
+		System.out.println(ob);
+		ob.push(20);//LIFO
+		System.out.println(ob);
+		ob.add(30);
+		System.out.println(ob);
+		int x=ob.remove();//FIFO
+		int y=ob.pop();
+		System.out.println(ob);
+		System.out.println(x);
+		System.out.println(y);
+		ob.push(40);
+		System.out.println(ob.peek());
+	}
+
+}
+
+
+
+
+package p8;
+import java.util.*;
+public class Demo2 {
+
+	public static void main(String[] args) {
+		Map<String, Integer>ob=new LinkedHashMap();
+		//push,pop,add,remove doesn't work
+		ob.put("Bangalore", 50000);
+		ob.put("Chennai", 70000);
+		ob.put("Bangalore", 20000);//always takes the last duplicate
+		ob.put("Mumbai", 40000);
+		ob.put("Delhi", 90000);//key don't have duplicates
+		ob.put("Hyderbad", 55000);//values can have duplicates
+		ob.put("Pune", 70000);
+		System.out.println(ob);
+		System.out.println(ob.keySet());
+		System.out.println(ob.values());
+		Iterator<String>it=ob.keySet().iterator();
+		while(it.hasNext()){
+			String x1=it.next();
+			System.out.println(x1+"  "+ob.get(x1));
+		}
+		for(String x1:ob.keySet()){
+			System.out.println(x1+"  "+ob.get(x1));
+		}
+		System.out.println(ob.containsKey("Bangalore"));
+		System.out.println(ob.containsValue(20000));
+	}
+
+}
+
+
+
+Create a collection to store employee id,qualification. The qualification can be more than one for an employee.
+
+package p8;
+import java.util.*;
+public class Employee {
+
+	public static void main(String[] args) {
+		Map<Integer,Set<String>>ob=new HashMap();
+		ob.put(1001,new LinkedHashSet());
+		ob.get(1001).add("BSc");//object reference of the linkedhashset
+		ob.get(1001).add("MBA");
+		ob.get(1001).add("BTech");
+		System.out.println(ob);
+		System.out.println(ob.keySet());
+		System.out.println(ob.values());
+		ob.put(1002, new LinkedHashSet());
+		ob.get(1002).add("BSc");//object reference of the linkedhashset
+		ob.get(1002).add("MSc");
+		ob.get(1002).add("Phd");
+		System.out.println(ob);
+		System.out.println(ob.keySet());
+		System.out.println(ob.values());
+		Set<String>ob1=ob.get(1002);
+		for(String x:ob1){
+			System.out.println(x);
+		}
+	}
+
+}
+
+Accept a sentence,display a table with the count of each word
+
+package p8;
+import java.util.*;
+public class Demo3 {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Sentence");
+		String s1=sc.nextLine();
+		Map<String,Integer>ob=new LinkedHashMap();
+		for(String x:s1.split(" ")){
+			if(ob.containsKey(x)){
+				int x1=ob.get(x)+1;
+				ob.put(x, x1);
+			}
+			else{
+				ob.put(x, 1);
+			}
+		}
+		System.out.println(ob);
+	}
+
+}
+
+
+
+
+
+

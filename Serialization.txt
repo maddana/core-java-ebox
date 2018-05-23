@@ -1,0 +1,49 @@
+package p11;
+
+import java.io.Serializable;
+
+public class Add implements Serializable{
+int num1,num2;
+transient int num3;
+
+public void setdata(int num1,int num2){
+	this.num1=num1;
+	this.num2=num2;
+}
+public void cal(){
+	num3=num1+num2;
+}
+public void display(){
+	System.out.println("NUM1 = "+num1+"\nNUM2 = "+num2+"\nSUM = "+num3);
+}
+	
+}
+
+package p11;
+import java.io.*;
+public class Demo7 {
+public static void main(String[] args)throws Exception {
+	Add add=new Add();
+	add.setdata(100, 150);
+	add.cal();
+	FileOutputStream f1=new FileOutputStream("D:\\add.dat");
+	ObjectOutputStream ob=new ObjectOutputStream(f1);
+	ob.writeObject(add);
+	System.out.println("Program over");
+}
+}
+
+package p11;
+import java.io.*;
+public class Demo8 {
+
+	public static void main(String[] args) throws Exception{
+	FileInputStream ft=new FileInputStream("D:\\add.dat");
+	ObjectInputStream ob=new ObjectInputStream(ft);
+	Add ob1=(Add)ob.readObject();
+	ob1.display();
+		
+
+	}
+
+}
